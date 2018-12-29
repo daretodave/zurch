@@ -1,15 +1,24 @@
 {
   "name": "zurch",
-  "version": "1.0.2",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.4",
+  "repository": "https://github.com/daretodave/zurch",
+  "homepage": "https://zurch.gitbook.io/js/",
+  "description": "Collection of meaningful functional programming techniques and abstractions",
+  "main": "main.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc -p ."
   },
   "jest": {
     "preset": "ts-jest"
   },
-  "keywords": ["functional", "pure", "fp", "tacit", "fantasy land"],
+  "keywords": [
+    "functional",
+    "pure",
+    "fp",
+    "tacit",
+    "fantasy land"
+  ],
   "author": "David Rehmat",
   "license": "MIT",
   "devDependencies": {
