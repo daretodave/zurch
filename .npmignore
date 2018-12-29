@@ -6,3 +6,4 @@ README.md
 tsconfig.json
 lib
 bin
+*.log
