@@ -1,12 +1,7 @@
-# Overview
+# zurch
 
-Get started here
+A collection of meaningful functional programming techniques and abstractions.
 
-{% page-ref page="guide/installing.md" %}
+> [Guides and API documentation](https://zurch.gitbook.io/js)
 
-{% page-ref page="guide/library.md" %}
-
-Core techniques
-
-{% page-ref page="example/curry.md" %}
-
+> [NPM Package](https://www.npmjs.com/package/zurch)
