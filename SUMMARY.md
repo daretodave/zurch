@@ -1,4 +1,14 @@
 # Table of contents
 
-* [Initial page](README.md)
+* [Overview](README.md)
+
+## Guide
+
+* [Installing](guide/installing.md)
+* [Library](guide/library.md)
+
+## Example
+
+* [Curry](example/curry.md)
+* [Do](example/do.md)
 
