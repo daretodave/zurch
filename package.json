@@ -1,6 +1,6 @@
 {
   "name": "zurch",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "repository": "https://github.com/daretodave/zurch",
   "homepage": "https://zurch.gitbook.io/js/",
   "description": "Collection of meaningful functional programming techniques and abstractions",
