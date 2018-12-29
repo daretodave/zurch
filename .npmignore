@@ -1,0 +1,8 @@
+node_modules
+.idea
+.npmrc
+LICENSE
+README.md
+tsconfig.json
+lib
+bin

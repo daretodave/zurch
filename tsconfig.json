@@ -4,6 +4,7 @@
     "target": "esnext",
     "sourceMap": true,
     "sourceRoot": "lib",
+    "declaration": true,
     "outDir": "out",
     "baseUrl": ".",
     "paths": {
