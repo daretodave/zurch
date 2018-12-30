@@ -1,13 +1,14 @@
 {
   "name": "zurch",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "repository": "https://github.com/daretodave/zurch",
   "homepage": "https://zurch.gitbook.io/js/",
   "description": "Collection of meaningful functional programming techniques and abstractions",
   "main": "main.js",
   "scripts": {
     "test": "jest",
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "prepublish": "node bin/upgrade.js"
   },
   "jest": {
     "preset": "ts-jest"
