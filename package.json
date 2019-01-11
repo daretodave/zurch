@@ -6,7 +6,8 @@
   "description": "Collection of meaningful functional programming techniques and abstractions",
   "main": "main.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --watch",
+    "testAll": "jest --watchAll",
     "build": "tsc -p ."
   },
   "jest": {
