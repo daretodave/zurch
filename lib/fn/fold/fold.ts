@@ -1,3 +1,4 @@
+import { log } from '../../../../shapes-n-lances/lib/common/index';
 
 //           Fold Right                //
 // Haskell's foldR w/ pattern matching //
@@ -11,3 +12,8 @@
 // PATTERN TO BUILD WITH FOLDR  || USAGE:
 // f []     = v                 || v = Identity/Base-Case
 // f (x:xs) = x (+) f xs        || func(head xs) f(xs)
+
+export function fold () {
+  log("In foldR");
+  return 0
+}

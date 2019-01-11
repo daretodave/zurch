@@ -1,4 +1,4 @@
-import {sum} from "../do/math/sum";
+import {sum} from "../../do/math/sum";
 
 import {curry} from "./curry";
 
