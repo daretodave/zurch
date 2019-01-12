@@ -23,3 +23,14 @@ export const
               ? fold(fn)(base)(xs)
               : base)
             )
+
+// After I learned the previous fold was wrong :)
+/*
+** fold = 
+**  (fn: Function) =>
+**    (base: any) =>
+**      ([x, ...xs]: any[]) =>
+**        !xs.length
+**          ? base
+**          : fn(x)(fold(fn)(base)(xs))
+*/
