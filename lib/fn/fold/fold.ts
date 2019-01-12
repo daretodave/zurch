@@ -1,5 +1,3 @@
-import { log } from '../../../../shapes-n-lances/lib/common/index';
-
 //           Fold Right                //
 // Haskell's foldR w/ pattern matching //
 
@@ -14,26 +12,13 @@ import { log } from '../../../../shapes-n-lances/lib/common/index';
 // f (x:xs) = x (+) f xs        || func(head xs) f(xs)
 
 export const 
-  fold = func => base => collection => {
-    const head = arr => arr[0]
-    let accum = []
-    
-    // if ([]) {
-      // return base;
-    // }else{
-      // return fold(func)(collection[0])(collection.slice(0, collection.length - 1));
-      // return fold(func(accum.concat(func(head(collection)))))
-      // return fold(func)(base)(func(accum) += (tail(collection)))
-    // }
-    return
-}
-
-/*
-  Take:
-    -func
-    -base
-    -collection
-  
-  1. Take the head of the collection
-  2. Apply the function to it
-*/
+  fold =
+    (fn: Function) => 
+      (base: any) => 
+        ([x,...xs]: any[]) => 
+          fn(
+            fn(x)(base))
+            (((xs.length != 0)
+              ? fold(fn)(base)(xs)
+              : base)
+            )
