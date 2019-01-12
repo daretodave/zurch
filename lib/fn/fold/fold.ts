@@ -18,6 +18,7 @@ export const
         ([x,...xs]: any[]) => 
           fn(
             fn(x)(base))
+            
             (((xs.length != 0)
               ? fold(fn)(base)(xs)
               : base)
