@@ -17,13 +17,45 @@ import { log } from '../../../util/log';
 // ==================================================== //
 
 // Mock Data
+let nada = []
 let numbers = [1, 2, 3, 4]
 let letters = ['a', 'b', 'c']
 let nested = [[1, 2, 3], ['a', 'b', 'c']]
-let doubleNested = [[1, 2, 3], [['a'], ['b', 'c']] ]
+let doubleNested = [[1, 2, 3], [['a'], ['b', 'c']]]
+let stringOfLetters = "Here is a String"
+let names = [
+  {name: "Steve"},
+  {name: "John"},
+  {name: "Mary"},
+  {name: "Sasha"}
+]
 
 
-describe('fold', () => {
+describe('fold test suite', () => {
+
+  // ACCEPTS A STRING
+  xtest('Should return first letter of string', () => {
+    expect(fold(x => y => x)('')(stringOfLetters)).toBe('H')
+  })
+
+  // ACCEPTS AN ARRAY
+  xtest('Should return head, always', () => {
+    // CONST func returns first element always
+    expect(fold(x => y => x)(0)(numbers)).toBe(1)
+  })
+
+  // EMPTY COLLECTION
+  xtest('Should return the base', () => {
+    const arbitraryFunc = x => y => x
+    expect(fold(arbitraryFunc)(0)([])).toBe(0)
+  })
+
+  // ACCEPTS ARRAYS OF OBJECTS
+  xtest("Should return the first element's name", () => {
+    
+    expect(fold(x => y => x.name)({})(names)).toBe("Steve")
+    // expect(fold(x => y => y.name)({})(names)).toBe("Sasha")
+  })
   
   // SUM
   xtest('Should sum() List', () => {
@@ -35,8 +67,6 @@ describe('fold', () => {
 
     let sum = fold(add)(0);
     
-    log(sum(numbers))
-
     expect(sum(numbers)).toEqual(10)
   })
 
@@ -55,7 +85,6 @@ describe('fold', () => {
     expect(product(numbers)).toEqual(24)
   })
 
-  
   // SUBTRACTION
   xtest('Should subtract() List', () => {
     function subtract (n) {
@@ -89,22 +118,10 @@ describe('fold', () => {
       .toEqual([1, 2, 3, ['a'], ['b', 'c']])
   })
 
-  // SLUGGIFY
-  test('Should convert Array to ', () => {
-    function concat (n) {
-      return function innerConcat (m) {
-        return n.concat(m)
-      }
-    }
-
-    let unSure = fold(
-      prev => next =>
-        concat(next)(concat(prev)(["-"]))
-    )([]);
-    
-    expect(unSure(letters))
-      .toEqual(['a', 'b', 'c'])
-
+  // HIGHEST N-VALUE IN ARRAY
+  xtest('Should return 666', () => {
+    const localNumbers = [1, 2, 666, 3, 4, 5]
+    expect(fold(n => m => m > n ? m : n)(0)(localNumbers)).toEqual(666)
   })
 });
 

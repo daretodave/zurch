@@ -11,26 +11,19 @@
 // f []     = v                 || v = Identity/Base-Case
 // f (x:xs) = x (+) f xs        || func(head xs) f(xs)
 
-export const 
-  fold =
-    (fn: Function) => 
-      (base: any) => 
-        ([x,...xs]: any[]) => 
-          fn(
-            fn(x)(base))
-            
-            (((xs.length != 0)
-              ? fold(fn)(base)(xs)
-              : base)
-            )
-
-// After I learned the previous fold was wrong :)
 /*
-** fold = 
-**  (fn: Function) =>
-**    (base: any) =>
-**      ([x, ...xs]: any[]) =>
-**        !xs.length
-**          ? base
-**          : fn(x)(fold(fn)(base)(xs))
+  fold() can work on Arrays, Strings, or any other data 
+  collection in Javascript that can use the
+  spread operator to iterate over itself.
 */
+
+export const
+  fold = 
+    (fn: Function) =>
+      (base: any) =>
+        ([x, ...xs]: any) =>
+          !x
+            ? base
+            : !xs.length
+                ? fn(x)(base)
+                : fn(x)(fold(fn)(base)(xs))
