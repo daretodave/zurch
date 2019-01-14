@@ -22,8 +22,6 @@ export const
     (fn: Function) =>
       (base: any) =>
         ([x, ...xs]: any) =>
-          !x
-            ? base
-            : !xs.length
-                ? fn(x)(base)
-                : fn(x)(fold(fn)(base)(xs))
+          !x ? base : !xs.length
+            ? fn(x)(base)
+            : fn(x)(fold(fn)(base)(xs))
