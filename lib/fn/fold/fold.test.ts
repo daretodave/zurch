@@ -2,7 +2,7 @@
 import { fold } from './fold';
 
 // Utilities
-import { log } from '../../../util/log';
+import { log } from '../../io/log';
 // ==================================================== //
 
         //           Fold Right                //
