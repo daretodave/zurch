@@ -1,3 +1,4 @@
+import { curry } from '../curry/curry'
 //           Fold Right                //
 // Haskell's foldR w/ pattern matching //
 
@@ -17,13 +18,19 @@
   spread operator to iterate over itself.
 */
 
-export const
-  fold = 
-    (fn: Function) =>
-      (base: any) =>
-        ([x, ...xs]: any) =>
-          !x
-            ? base
-            : !xs.length
-                ? fn(x)(base)
-                : fn(x)(fold(fn)(base)(xs))
+export const fold = 
+  (fn: Function) =>
+    (base: any) =>
+      ([x, ...xs]: any) =>
+        !x
+          ? base
+          : !xs.length
+              ? fn(x)(base)
+              : fn(x)(fold(fn)(base)(xs))
+
+export const fold_ = curry(
+  (fn, base, [x, ...xs]) =>
+    !x ? base : !xs.length
+      ? fn(x)(base)
+      : fn(x)(fold(fn)(base)(xs))
+)

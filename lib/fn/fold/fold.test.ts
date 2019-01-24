@@ -1,5 +1,5 @@
 // foldR.test.ts
-import { fold } from './fold';
+import { fold, fold_ } from './fold';
 
 // Utilities
 import { log } from '../../../util/log';
@@ -58,14 +58,14 @@ describe('fold test suite', () => {
   })
   
   // SUM
-  xtest('Should sum() List', () => {
+  test('Should sum() List', () => {
     function add (n) {
       return function innerAdd (m) {
         return n + m
       }
     }
 
-    let sum = fold(add)(0);
+    let sum = fold_(add)(0);
     
     expect(sum(numbers)).toEqual(10)
   })
