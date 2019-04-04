@@ -9,11 +9,6 @@ describe('compose', () => {
     const double = multiply(2);
     const triple = multiply(3);
 
-    // Compose goes from right to left
-    // const add5ThenDouble = compose(add5)(double)
-    // add5ThenDouble(5) === 15
-    // add5ThenDouble(5) !== 20
-
     const add5ThenDouble = compose(double)(add5);
     
     // Test other compose_
