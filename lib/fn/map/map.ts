@@ -1,4 +1,4 @@
-
+// TODO: Write tests!
 const mapp =
   (func: Function) =>
   // Missed Opportunity for ([x, xs])
