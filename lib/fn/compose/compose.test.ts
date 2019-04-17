@@ -1,22 +1,26 @@
 import { compose, compose_ } from './compose';
 
+const add = (n: number) => (m: number) : number => n + m;
+const multiply = (n: number) => (m: number): number => n * m;
+
+const double = multiply(2)
+const add5 = add(5)
+
 describe('compose', () => {
-  test('compose to create addDouble', () => {
-    const add = n => m => n + m;
-    const multiply = n => m => n * m;
 
-    const add5 = add(5);
-    const double = multiply(2);
-    const triple = multiply(3);
+  test('compose works right to left', () => {
+    const add5Double  = compose(double)(add5)
 
-    const add5ThenDouble = compose(double)(add5);
-    
-    // Test other compose_
-    const add10ThenTriple = compose_(triple)(add5);
+    // Right to Left
+    expect(double(add5(10))).toBe(30);
+    expect(add5Double(10)).toBe(30)
+  }),
 
-    expect(add5ThenDouble(5)).toBe(20);
-    // FAILS...
-    expect(add10ThenTriple(5)).toBe(45);
+  test('compose_ can take multiple args', () => {
+    const add5Double_ = compose_(double, add5)
+
+    // Right to Left
+    expect(double(add5(10))).toBe(30);
+    expect(add5Double_(10)).toBe(30)
   })
-
 })
