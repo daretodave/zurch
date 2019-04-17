@@ -3,6 +3,10 @@ import { fold, fold_ } from './fold';
 
 // Utilities
 import { log } from '../../io/log';
+
+// Mocks
+import  mockData from '../../mock/primatives'
+
 // ==================================================== //
 
         //           Fold Right                //
@@ -17,44 +21,51 @@ import { log } from '../../io/log';
 // ==================================================== //
 
 // Mock Data
-let nada = []
-let numbers = [1, 2, 3, 4]
-let letters = ['a', 'b', 'c']
-let nested = [[1, 2, 3], ['a', 'b', 'c']]
-let doubleNested = [[1, 2, 3], [['a'], ['b', 'c']]]
-let stringOfLetters = "Here is a String"
-let names = [
-  {name: "Steve"},
-  {name: "John"},
-  {name: "Mary"},
-  {name: "Sasha"}
-]
+// let nada = []
+// let numbers = [1, 2, 3, 4]
+// let letters = ['a', 'b', 'c']
+// let nested = [[1, 2, 3], ['a', 'b', 'c']]
+// let doubleNested = [[1, 2, 3], [['a'], ['b', 'c']]]
+// let stringOfLetters = "Here is a String"
+// let names = [
+//   {name: "Steve"},
+//   {name: "John"},
+//   {name: "Mary"},
+//   {name: "Sasha"}
+// ]
 
+const {
+  stringOfLetters,
+  numbers,
+  arrayOfObjects,
+  nested,
+  doubleNested
+} = mockData
 
 describe('fold test suite', () => {
 
   // ACCEPTS A STRING
-  xtest('Should return first letter of string', () => {
+  test('Should return first letter of string', () => {
     expect(fold(x => y => x)('')(stringOfLetters)).toBe('H')
   })
 
   // ACCEPTS AN ARRAY
-  xtest('Should return head, always', () => {
+  test('Should return head, always', () => {
     // CONST func returns first element always
     expect(fold(x => y => x)(0)(numbers)).toBe(1)
   })
 
   // EMPTY COLLECTION
-  xtest('Should return the base', () => {
+  test('Should return the base', () => {
     const arbitraryFunc = x => y => x
     expect(fold(arbitraryFunc)(0)([])).toBe(0)
   })
 
   // ACCEPTS ARRAYS OF OBJECTS
-  xtest("Should return the first element's name", () => {
+  test("Should return the first element's name", () => {
     
-    expect(fold(x => y => x.name)({})(names)).toBe("Steve")
-    // expect(fold(x => y => y.name)({})(names)).toBe("Sasha")
+    expect(fold(x => y => x.name)({})(arrayOfObjects)).toBe("Steve")
+    // expect(fold(x => y => y.name)({})(arrayOfObjects)).toBe("Sasha")
   })
   
   // SUM
@@ -71,7 +82,7 @@ describe('fold test suite', () => {
   })
 
   // PRODUCT
-  xtest('Should multiply() List', () => {
+  test('Should multiply() List', () => {
     function multiply (n) {
       return function innerMultiply (m) {
         return n * m
@@ -80,13 +91,11 @@ describe('fold test suite', () => {
 
     let product = fold(multiply)(1);
     
-    log(product(numbers))
-
     expect(product(numbers)).toEqual(24)
   })
 
   // SUBTRACTION
-  xtest('Should subtract() List', () => {
+  test('Should subtract() List', () => {
     function subtract (n) {
       return function innerSubtract (m) {
         return n - m
@@ -95,13 +104,11 @@ describe('fold test suite', () => {
 
     let sub = fold(subtract)(0);
     
-    log(sub(numbers))
-
     expect(sub(numbers)).toEqual(-2)
   })
 
   // FLATONCE
-  xtest('Should flatten array once', () => {
+  test('Should flatten array once', () => {
     function concat (n) {
       return function innerConcat (m) {
         return n.concat(m)
@@ -119,7 +126,7 @@ describe('fold test suite', () => {
   })
 
   // HIGHEST N-VALUE IN ARRAY
-  xtest('Should return 666', () => {
+  test('Should return 666', () => {
     const localNumbers = [1, 2, 666, 3, 4, 5]
     expect(fold(n => m => m > n ? m : n)(0)(localNumbers)).toEqual(666)
   })
